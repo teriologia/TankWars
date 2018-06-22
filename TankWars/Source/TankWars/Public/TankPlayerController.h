@@ -14,9 +14,14 @@ UCLASS()
 class TANKWARS_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
+
 public:
 	ATank * GetControlledTank() const;
-	
+
+	virtual void Tick(float DeltaSeconds);
 	virtual void BeginPlay() override;
+
+	void AimTowardsCrosshair();
+	bool GetSightHitLocation(FVector& OutHitLocation) const;
+
 };
