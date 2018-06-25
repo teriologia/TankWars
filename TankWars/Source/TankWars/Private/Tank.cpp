@@ -11,6 +11,8 @@ ATank::ATank()
 
 }
 
+
+
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
@@ -31,4 +33,11 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
+
+void ATank::AimAt(FVector OutHitLocation)
+{
+	auto OutTankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OutTankName, *OutHitLocation.ToString());
+}
+
 
