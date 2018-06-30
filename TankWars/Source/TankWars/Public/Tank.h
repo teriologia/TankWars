@@ -16,6 +16,9 @@ public:
 	// Sets default values for this pawn's properties
 	ATank();
 
+	UPROPERTY(EditAnywhere, Category = Firing)
+		float Launchspeed = 10000;
+
 	void AimAt(FVector OutHitLocation);
 	
 	UFUNCTION(BlueprintCallable, Category = Setup)
