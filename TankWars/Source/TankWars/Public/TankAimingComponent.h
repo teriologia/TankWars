@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/Actor.h"
@@ -9,6 +10,8 @@
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
+class UTankBarrel;
+class UTankTurret;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class TANKWARS_API UTankAimingComponent : public UActorComponent
@@ -28,10 +31,12 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	void AimAt(FVector OutHitLocation, float Launchspeed);
-	void SetBarrelRefferance(UStaticMeshComponent* BarrelToSet);
+	void SetBarrelRefferance(UTankBarrel* BarrelToSet);
+	void SetTurretRefferance(UTankTurret* TurretToSet);
 
 private:
 
-	UStaticMeshComponent * Barrel = nullptr;
+	UTankBarrel * Barrel = nullptr;
+	UTankTurret * Turret = nullptr;
 	void MoveBarrelTowards(FVector AimDirection);
 };

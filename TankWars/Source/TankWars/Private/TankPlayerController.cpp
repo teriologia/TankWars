@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankPlayerController.h"
-
+#include "Tank.h"
 
 void ATankPlayerController::BeginPlay()
 {
@@ -76,11 +76,15 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 	FHitResult HitResult;
 	auto StartLocation = PlayerCameraManager->GetCameraLocation();
 	auto EndLocation = StartLocation + (LookDirection * LineTraceRange);
+
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(GetPawn());
 	if (GetWorld()->LineTraceSingleByChannel(
 		HitResult,
 		StartLocation,
 		EndLocation,
-		ECollisionChannel::ECC_Visibility
+		ECollisionChannel::ECC_Visibility,
+		Params
 	))
 	{
 		OutHitLocation = HitResult.Location;

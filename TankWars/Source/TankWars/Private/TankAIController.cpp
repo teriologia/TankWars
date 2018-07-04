@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankAIController.h"
+#include "Tank.h"
 
 void ATankAIController::BeginPlay()
 {
@@ -41,5 +42,6 @@ ATank * ATankAIController::GetPlayerTank() const
 	{
 		return nullptr;
 	}*/
+
 	return Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 }

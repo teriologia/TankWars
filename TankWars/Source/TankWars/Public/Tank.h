@@ -2,10 +2,13 @@
 
 #pragma once
 
-#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
+
+class UTankBarrel;
+class UTankTurret;
+class UTankAimingComponent;
 
 UCLASS()
 class TANKWARS_API ATank : public APawn
@@ -22,7 +25,10 @@ public:
 	void AimAt(FVector OutHitLocation);
 	
 	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetBarrelRefferance(UStaticMeshComponent* BarrelToSet);
+	void SetBarrelRefferance(UTankBarrel* BarrelToSet);
+
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetTurretRefferance(UTankTurret* TurretToSet);
 
 protected:
 	// Called when the game starts or when spawned
