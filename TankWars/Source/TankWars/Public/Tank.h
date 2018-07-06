@@ -21,18 +21,17 @@ public:
 	ATank();
 	void AimAt(FVector OutHitLocation);
 
+	UFUNCTION(BlueprintCallable, Category = Firing)
+		void TankFire();
 private:
 	UPROPERTY(EditAnywhere, Category = Firing)
-		float Launchspeed = 10000;
+		float Launchspeed = 7000;
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelRefferance(UTankBarrel* BarrelToSet);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretRefferance(UTankTurret* TurretToSet);
-
-	UFUNCTION(BlueprintCallable, Category = Firing)
-	void TankFire();
 
 	UPROPERTY(EditAnywhere, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
@@ -51,6 +50,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
-	
+	float ReloadTime = 2.33;
+
+	double LastFire = 0;
 };

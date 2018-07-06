@@ -30,6 +30,7 @@ ATank * ATankPlayerController::GetControlledTank() const
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
+	if (!GetPawn()) { return; }
 	if (!GetControlledTank())
 	{
 		return;
