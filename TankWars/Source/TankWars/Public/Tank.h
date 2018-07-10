@@ -24,7 +24,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Firing)
 		void TankFire();
 private:
-	UPROPERTY(EditAnywhere, Category = Firing)
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 		float Launchspeed = 7000;
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
@@ -33,7 +33,7 @@ private:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretRefferance(UTankTurret* TurretToSet);
 
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	UTankBarrel* Barrel = nullptr;
