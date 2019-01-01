@@ -20,6 +20,8 @@ void ATankAIController::Tick(float DeltaTime)
 
 	if (PlayerTank)
 	{
+		MoveToActor(PlayerTank, AcceptanceRadius); //AI controlled tank moving to target and stop at the AcceptanceRadius value
+
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
 		ControlledTank->TankFire();
 	}
